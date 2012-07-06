@@ -17,6 +17,8 @@ public:
     
 private:
     Ui::PinoutResolver *ui;
+
+    void LoadXmlPinout(QString filename);
 };
 
 #endif // PINOUTRESOLVER_H
