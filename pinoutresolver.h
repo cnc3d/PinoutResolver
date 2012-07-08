@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QMap>
+#include <QMultiMap>
+
 
 #include <QtXml>
 
@@ -62,14 +64,17 @@ private:
 
     QDomElement LoadXml(QString filename, QString rootTag);
     void LoadPeripheralList(QDomElement root);
-    void ListPeripheralPinout(QDomElement root);
+    void LoadDevicePinout(QDomElement root);
+    void ListFunctions(QDomElement root);
     void LoadRequest(QDomElement root);
     void preparePinMap();
     void resolve(QDomNode pinout);
+    QList<quint64> GetPinoutCartesianProduct(QDomNodeList function);
 
     QMap<QString, quint64> _peripheralsMap;
     QMap<QString, quint64> _pinoutMap;
     QMap<QString, int> _peripheralsRequested;
+    QMultiMap<QString, QString> _alternatePinoutMap;
 
     ResolveTree _treeRoot;
 };

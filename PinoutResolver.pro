@@ -18,3 +18,12 @@ SOURCES += main.cpp\
 HEADERS  += pinoutresolver.h
 
 FORMS    += pinoutresolver.ui
+
+OTHER_FILES += \
+    devices/STM32F407.xml
+
+
+install_devices.path = $$OUT_PWD/devices
+install_devices.files += devices/*.xml
+
+INSTALLS += install_devices

@@ -1,0 +1,724 @@
+<Device name="STM32F407VG" package="TQFP100">
+	<Peripherals>
+		<Peripheral name="TIM1"/>
+		<Peripheral name="TIM2"/>
+		<Peripheral name="TIM3"/>
+		<Peripheral name="TIM4"/>
+		<Peripheral name="TIM5"/>
+		<Peripheral name="TIM6"/>
+		<Peripheral name="TIM7"/>
+		<Peripheral name="TIM8"/>
+		<Peripheral name="TIM9"/>
+		<Peripheral name="TIM10"/>
+		<Peripheral name="TIM11"/>
+		<Peripheral name="TIM12"/>
+		<Peripheral name="TIM13"/>
+		<Peripheral name="TIM14"/>
+		<Peripheral name="USART1"/>
+		<Peripheral name="USART2"/>
+		<Peripheral name="USART3"/>
+		<Peripheral name="UART4"/>
+		<Peripheral name="UART5"/>
+		<Peripheral name="USART6"/>
+		<Peripheral name="CAN1"/>
+		<Peripheral name="CAN2"/>
+		<Peripheral name="ADC1"/>
+		<Peripheral name="ADC2"/>
+		<Peripheral name="ADC3"/>
+		<Peripheral name="ETH_MII"/>
+		<Peripheral name="ETH_RMII"/>
+		<Peripheral name="USB_OTG"/>
+		<Peripheral name="USB_OTG_ULPI"/>
+		<Peripheral name="SPI1"/>
+		<Peripheral name="SPI2"/>
+		<Peripheral name="SPI3"/>
+		<Peripheral name="DCMI"/>
+		<Peripheral name="FSCM"/>
+		<Peripheral name="I2C1"/>
+		<Peripheral name="I2C2"/>
+		<Peripheral name="I2C3"/>
+		<Peripheral name="I2S1"/>
+		<Peripheral name="I2S2"/>
+		<Peripheral name="I2S3"/>
+		<Peripheral name="SDIO"/>
+		<Peripheral name="JTAG"/>
+		<Peripheral name="TRACE"/>
+	</Peripherals>
+
+	<Pinout>
+		<Pin port="PA0">
+			<Alternate name="TIM2_CH1_ETR"/>
+			<Alternate name="TIM5_CH1"/>
+			<Alternate name="TIM8_ETR"/>
+			<Alternate name="USART2_CTS"/>
+			<Alternate name="UART4_TX"/>
+			<Alternate name="ADC123_IN0"/>
+			<Alternate name="ETH_MII_CRS"/>
+		</Pin>
+		<Pin port="PA1">
+			<Alternate name="TIM2_CH2"/>
+			<Alternate name="TIM5_CH2"/>
+			<Alternate name="USART2_RTS"/>
+			<Alternate name="UART4_RX"/>
+			<Alternate name="ADC123_IN1"/>
+			<Alternate name="ETH_MII_RX_CLK"/>
+			<Alternate name="ETH_RMII_REF_CLK"/>
+		</Pin>
+		<Pin port="PA10">
+			<Alternate name="TIM1_CH3"/>
+			<Alternate name="USART1_RX"/>
+			<Alternate name="OTG_FS_ID"/>
+			<Alternate name="DCMI_D1"/>
+		</Pin>
+		<Pin port="PA11">
+			<Alternate name="TIM1_CH4"/>
+			<Alternate name="USART1_CTS"/>
+			<Alternate name="CAN1_RX"/>
+			<Alternate name="OTG_FS_DM"/>
+		</Pin>
+		<Pin port="PA12">
+			<Alternate name="TIM1_ETR"/>
+			<Alternate name="USART1_RTS"/>
+			<Alternate name="CAN1_TX"/>
+			<Alternate name="OTG_FS_DP"/>
+		</Pin>
+		<Pin port="PA13">
+			<Alternate name="JTMS-SWDIO"/>
+		</Pin>
+		<Pin port="PA14">
+			<Alternate name="JTCK-SWCLK"/>
+		</Pin>
+		<Pin port="PA15">
+			<Alternate name="TIM2_CH1_ETR"/>
+			<Alternate name="SPI1_NSS"/>
+			<Alternate name="SPI3_NSS"/>
+			<Alternate name="I2S3_WS"/>
+			<Alternate name="JTDI"/>
+		</Pin>
+		<Pin port="PA2">
+			<Alternate name="TIM2_CH3"/>
+			<Alternate name="TIM5_CH3"/>
+			<Alternate name="TIM9_CH1"/>
+			<Alternate name="USART2_TX"/>
+			<Alternate name="ADC123_IN2"/>
+			<Alternate name="ETH_MDIO"/>
+		</Pin>
+		<Pin port="PA3">
+			<Alternate name="TIM2_CH4"/>
+			<Alternate name="TIM5_CH4"/>
+			<Alternate name="TIM9_CH2"/>
+			<Alternate name="USART2_RX"/>
+			<Alternate name="ADC123_IN3"/>
+			<Alternate name="ETH_MII_COL"/>
+			<Alternate name="OTG_HS_ULPI_D0"/>
+		</Pin>
+		<Pin port="PA4">
+			<Alternate name="USART2_CK"/>
+			<Alternate name="DAC1_OUT"/>
+			<Alternate name="ADC12_IN4"/>
+			<Alternate name="OTG_HS_SOF"/>
+			<Alternate name="SPI1_NSS"/>
+			<Alternate name="SPI3_NSS"/>
+			<Alternate name="DCMI_HSYNC"/>
+			<Alternate name="I2S3_WS"/>
+		</Pin>
+		<Pin port="PA5">
+			<Alternate name="TIM2_CH1_ETR"/>
+			<Alternate name="TIM8_CHIN"/>
+			<Alternate name="DAC2_OUT"/>
+			<Alternate name="ADC12_IN5"/>
+			<Alternate name="OTG_HS_ULPI_CK"/>
+			<Alternate name="SPI1_SCK"/>
+		</Pin>
+		<Pin port="PA6">
+			<Alternate name="TIM1_BKIN"/>
+			<Alternate name="TIM3_CH1"/>
+			<Alternate name="TIM8_BKIN"/>
+			<Alternate name="TIM13_CH1"/>
+			<Alternate name="ADC12_IN6"/>
+			<Alternate name="SPI1_MISO"/>
+			<Alternate name="DCMI_PIXCLK"/>
+		</Pin>
+		<Pin port="PA7">
+			<Alternate name="TIM1_CH1"/>
+			<Alternate name="TIM3_CH2"/>
+			<Alternate name="TIM8_CH1N"/>
+			<Alternate name="TIM14_CH1"/>
+			<Alternate name="ADC12_IN7"/>
+			<Alternate name="ETH_MII_RX_DV"/>
+			<Alternate name="RMII_CRS_DV"/>
+			<Alternate name="SPI1_MOSI"/>
+		</Pin>
+		<Pin port="PA8">
+			<Alternate name="TIM1_CH1"/>
+			<Alternate name="USART1_CK"/>
+			<Alternate name="MCO1"/>
+			<Alternate name="OTG_FS_SOF"/>
+			<Alternate name="I2C3_SCL"/>
+		</Pin>
+		<Pin port="PA9">
+			<Alternate name="TIM1_CH2"/>
+			<Alternate name="USART1_TX"/>
+			<Alternate name="OTG_FS_VBUS"/>
+			<Alternate name="DCMI_D0"/>
+			<Alternate name="I2C3_SMBA"/>
+		</Pin>
+		<Pin port="PB0">
+			<Alternate name="TIM1_CH2N"/>
+			<Alternate name="TIM3_CH3"/>
+			<Alternate name="TIM8_CH2N"/>
+			<Alternate name="ADC12_IN8"/>
+			<Alternate name="ETH_MII_RXD2"/>
+			<Alternate name="OTG_HS_ULPI_D1"/>
+		</Pin>
+		<Pin port="PB1">
+			<Alternate name="TIM1_CH3N"/>
+			<Alternate name="TIM3_CH4"/>
+			<Alternate name="TIM8_CH3N"/>
+			<Alternate name="ADC12_IN9"/>
+			<Alternate name="ETH_MII_RXD3"/>
+			<Alternate name="OTG_HS_INTN"/>
+			<Alternate name="OTG_HS_ULPI_D2"/>
+		</Pin>
+		<Pin port="PB10">
+			<Alternate name="TIM2_CH3"/>
+			<Alternate name="USART3_TX"/>
+			<Alternate name="ETH_MII_RX_ER"/>
+			<Alternate name="OTG_HS_SCL"/>
+			<Alternate name="OTG_HS_ULPI_D3"/>
+			<Alternate name="SPI2_SCK"/>
+			<Alternate name="I2C2_SCL"/>
+			<Alternate name="I2S2_CK"/>
+		</Pin>
+		<Pin port="PB11">
+			<Alternate name="TIM2_CH4"/>
+			<Alternate name="USART3_RX"/>
+			<Alternate name="ETH_MII_TX_EN"/>
+			<Alternate name="ETH_RMII_TX_EN"/>
+			<Alternate name="OTG_HS_SDA"/>
+			<Alternate name="OTG_HS_ULPI_D4"/>
+			<Alternate name="I2C2_SDA"/>
+		</Pin>
+		<Pin port="PB12">
+			<Alternate name="TIM1_BKIN"/>
+			<Alternate name="USART3_CK"/>
+			<Alternate name="CAN2_RX"/>
+			<Alternate name="ETH_MII_TXD0"/>
+			<Alternate name="ETH_RMII_TXD0"/>
+			<Alternate name="OTG_HS_ID"/>
+			<Alternate name="OTG_HS_ULPI_D5"/>
+			<Alternate name="SPI2_NSS"/>
+			<Alternate name="I2C2_SMBA"/>
+			<Alternate name="I2S2_WS"/>
+		</Pin>
+		<Pin port="PB13">
+			<Alternate name="TIM1_CH1N"/>
+			<Alternate name="USART3_CTS"/>
+			<Alternate name="CAN2_TX"/>
+			<Alternate name="ETH_MII_TXD1"/>
+			<Alternate name="ETH_RMII_TXD1"/>
+			<Alternate name="OTG_HS_VBUS"/>
+			<Alternate name="OTG_HS_ULPI_D6"/>
+			<Alternate name="SPI2_SCK"/>
+			<Alternate name="I2S2_CK"/>
+		</Pin>
+		<Pin port="PB14">
+			<Alternate name="TIM1_CH2N"/>
+			<Alternate name="TIM8_CH2N"/>
+			<Alternate name="TIM12_CH1"/>
+			<Alternate name="USART3_RTS"/>
+			<Alternate name="OTG_HS_DM"/>
+			<Alternate name="SPI2_MISO"/>
+			<Alternate name="I2S2ext_SD"/>
+		</Pin>
+		<Pin port="PB15">
+			<Alternate name="TIM1_CH3N"/>
+			<Alternate name="TIM8_CH3N"/>
+			<Alternate name="TIM12_CH2"/>
+			<Alternate name="OTG_HS_DP"/>
+			<Alternate name="SPI2_MOSI"/>
+			<Alternate name="I2S2_SD"/>
+		</Pin>
+		<Pin port="PB2">
+		</Pin>
+		<Pin port="PB3">
+			<Alternate name="TIM2_CH2"/>
+			<Alternate name="SPI1_SCK"/>
+			<Alternate name="SPI3_SCK"/>
+			<Alternate name="I2S3_CK"/>
+			<Alternate name="JTDO"/>
+			<Alternate name="TRACESWO"/>
+		</Pin>
+		<Pin port="PB4">
+			<Alternate name="TIM3_CH1"/>
+			<Alternate name="SPI1_MISO"/>
+			<Alternate name="SPI3_MISO"/>
+			<Alternate name="I2S3ext_SD"/>
+			<Alternate name="NJTRST"/>
+		</Pin>
+		<Pin port="PB5">
+			<Alternate name="TIM3_CH2"/>
+			<Alternate name="CAN2_RX"/>
+			<Alternate name="ETH_PPS_OUT"/>
+			<Alternate name="OTG_HS_ULPI_D7"/>
+			<Alternate name="SPI1_MOSI"/>
+			<Alternate name="SPI3_MOSI"/>
+			<Alternate name="DCMI_D10"/>
+			<Alternate name="I2C1_SMBA"/>
+			<Alternate name="I2S3_SD"/>
+		</Pin>
+		<Pin port="PB6">
+			<Alternate name="TIM4_CH1"/>
+			<Alternate name="USART1_TX"/>
+			<Alternate name="CAN2_TX"/>
+			<Alternate name="OTG_FS_INTN"/>
+			<Alternate name="DCMI_D5"/>
+			<Alternate name="I2C1_SCL"/>
+		</Pin>
+		<Pin port="PB7">
+			<Alternate name="TIM4_CH2"/>
+			<Alternate name="USART1_RX"/>
+			<Alternate name="DCMI_VSYNC"/>
+			<Alternate name="FSMC_NL"/>
+			<Alternate name="I2C1_SDA"/>
+		</Pin>
+		<Pin port="PB8">
+			<Alternate name="TIM4_CH3"/>
+			<Alternate name="TIM10_CH1"/>
+			<Alternate name="CAN1_RX"/>
+			<Alternate name="ETH_MII_TXD3"/>
+			<Alternate name="OTG_FS_SCL"/>
+			<Alternate name="DCMI_D6"/>
+			<Alternate name="I2C1_SCL"/>
+			<Alternate name="SDIO_D4"/>
+		</Pin>
+		<Pin port="PB9">
+			<Alternate name="TIM4_CH4"/>
+			<Alternate name="TIM11_CH1"/>
+			<Alternate name="CAN1_TX"/>
+			<Alternate name="OTG_FS_SDA"/>
+			<Alternate name="SPI2_NSS"/>
+			<Alternate name="DCMI_D7"/>
+			<Alternate name="I2C1_SDA"/>
+			<Alternate name="I2S2_WS"/>
+			<Alternate name="SDIO_D5"/>
+		</Pin>
+		<Pin port="PC0">
+			<Alternate name="ADC123_IN10"/>
+			<Alternate name="OTG_HS_ULPI_STP"/>
+		</Pin>
+		<Pin port="PC1">
+			<Alternate name="ADC123_IN11"/>
+			<Alternate name="ETH_MDC"/>
+		</Pin>
+		<Pin port="PC10">
+			<Alternate name="USART3_TX"/>
+			<Alternate name="UART4_TX"/>
+			<Alternate name="SPI3_SCK"/>
+			<Alternate name="DCMI_D8"/>
+			<Alternate name="I2S3_CK"/>
+			<Alternate name="SDIO_D2"/>
+		</Pin>
+		<Pin port="PC11">
+			<Alternate name="USART3_RX"/>
+			<Alternate name="UART4_RX"/>
+			<Alternate name="SPI3_MISO"/>
+			<Alternate name="DCMI_D4"/>
+			<Alternate name="I2S3ext_SD"/>
+			<Alternate name="SDIO_D3"/>
+		</Pin>
+		<Pin port="PC12">
+			<Alternate name="USART3_CK"/>
+			<Alternate name="UART5_TX"/>
+			<Alternate name="SPI3_MOSI"/>
+			<Alternate name="DCMI_D9"/>
+			<Alternate name="I2S3_SD"/>
+			<Alternate name="SDIO_CK"/>
+		</Pin>
+		<Pin port="PC13">
+		</Pin>
+		<Pin port="PC14">
+		</Pin>
+		<Pin port="PC15">
+		</Pin>
+		<Pin port="PC2">
+			<Alternate name="ADC123_IN12"/>
+			<Alternate name="ETH_MII_TXD2"/>
+			<Alternate name="OTG_HS_ULPI_DIR"/>
+			<Alternate name="SPI2_MISO"/>
+			<Alternate name="I2S2ext_SD"/>
+		</Pin>
+		<Pin port="PC3">
+			<Alternate name="ADC123_IN13"/>
+			<Alternate name="ETH_MII_TX_CLK"/>
+			<Alternate name="OTG_HS_ULPI_NXT"/>
+			<Alternate name="SPI2_MOSI"/>
+			<Alternate name="I2S2_SD"/>
+		</Pin>
+		<Pin port="PC4">
+			<Alternate name="ADC12_IN14"/>
+			<Alternate name="ETH_MII_RX_D0"/>
+			<Alternate name="ETH_RMII_RX_D0"/>
+		</Pin>
+		<Pin port="PC5">
+			<Alternate name="ADC12_IN15"/>
+			<Alternate name="ETH_MII_RX_D1"/>
+			<Alternate name="ETH_RMII_RX_D1"/>
+		</Pin>
+		<Pin port="PC6">
+			<Alternate name="TIM3_CH1"/>
+			<Alternate name="TIM8_CH1"/>
+			<Alternate name="USART6_TX"/>
+			<Alternate name="DCMI_D0"/>
+			<Alternate name="I2S2_MCK"/>
+			<Alternate name="SDIO_D6"/>
+		</Pin>
+		<Pin port="PC7">
+			<Alternate name="TIM3_CH2"/>
+			<Alternate name="TIM8_CH2"/>
+			<Alternate name="USART6_RX"/>
+			<Alternate name="DCMI_D1"/>
+			<Alternate name="I2S3_MCK"/>
+			<Alternate name="SDIO_D7"/>
+		</Pin>
+		<Pin port="PC8">
+			<Alternate name="TIM3_CH3"/>
+			<Alternate name="TIM8_CH3"/>
+			<Alternate name="USART6_CK"/>
+			<Alternate name="DCMI_D2"/>
+			<Alternate name="SDIO_D0"/>
+		</Pin>
+		<Pin port="PC9">
+			<Alternate name="TIM3_CH4"/>
+			<Alternate name="TIM8_CH4"/>
+			<Alternate name="DCMI_D3"/>
+			<Alternate name="I2C3_SDA"/>
+			<Alternate name="I2S_CKIN"/>
+			<Alternate name="SDIO_D1"/>
+		</Pin>
+		<Pin port="PD0">
+			<Alternate name="CAN1_RX"/>
+			<Alternate name="FSMC_D2"/>
+		</Pin>
+		<Pin port="PD1">
+			<Alternate name="CAN1_TX"/>
+			<Alternate name="FSMC_D3"/>
+		</Pin>
+		<Pin port="PD10">
+			<Alternate name="USART3_CK"/>
+			<Alternate name="FSMC_D15"/>
+		</Pin>
+		<Pin port="PD11">
+			<Alternate name="USART3_CTS"/>
+			<Alternate name="FSMC_A16"/>
+		</Pin>
+		<Pin port="PD12">
+			<Alternate name="TIM4_CH1"/>
+			<Alternate name="USART3_RTS"/>
+			<Alternate name="FSMC_A17"/>
+		</Pin>
+		<Pin port="PD13">
+			<Alternate name="TIM4_CH2"/>
+			<Alternate name="FSMC_A18"/>
+		</Pin>
+		<Pin port="PD14">
+			<Alternate name="TIM4_CH3"/>
+			<Alternate name="FSMC_D0"/>
+		</Pin>
+		<Pin port="PD15">
+			<Alternate name="TIM4_CH4"/>
+			<Alternate name="FSMC_D1"/>
+		</Pin>
+		<Pin port="PD2">
+			<Alternate name="TIM3_ETR"/>
+			<Alternate name="UART5_RX"/>
+			<Alternate name="DCMI_D11"/>
+			<Alternate name="SDIO_CMD"/>
+		</Pin>
+		<Pin port="PD3">
+			<Alternate name="USART2_CTS"/>
+			<Alternate name="FSMC_CLK"/>
+		</Pin>
+		<Pin port="PD4">
+			<Alternate name="USART2_RTS"/>
+			<Alternate name="FSMC_NOE"/>
+		</Pin>
+		<Pin port="PD5">
+			<Alternate name="USART2_TX"/>
+			<Alternate name="FSMC_NWE"/>
+		</Pin>
+		<Pin port="PD6">
+			<Alternate name="USART2_RX"/>
+			<Alternate name="FSMC_NWAIT"/>
+		</Pin>
+		<Pin port="PD7">
+			<Alternate name="USART2_CK"/>
+			<Alternate name="FSMC_NE1 + FSMC_NCE2"/>
+		</Pin>
+		<Pin port="PD8">
+			<Alternate name="USART3_TX"/>
+			<Alternate name="FSMC_D13"/>
+		</Pin>
+		<Pin port="PD9">
+			<Alternate name="USART3_RX"/>
+			<Alternate name="FSMC_D14"/>
+		</Pin>
+		<Pin port="PE0">
+			<Alternate name="TIM4_ETR"/>
+			<Alternate name="DCMI_D2"/>
+			<Alternate name="FSMC_NBL0"/>
+		</Pin>
+		<Pin port="PE1">
+			<Alternate name="DCMI_D3"/>
+			<Alternate name="FSMC_NBL1"/>
+		</Pin>
+		<Pin port="PE10">
+			<Alternate name="TIM1_CH2N"/>
+			<Alternate name="FSMC_D7"/>
+		</Pin>
+		<Pin port="PE11">
+			<Alternate name="TIM1_CH2"/>
+			<Alternate name="FSMC_D8"/>
+		</Pin>
+		<Pin port="PE12">
+			<Alternate name="TIM1_CH3N"/>
+			<Alternate name="FSMC_D9"/>
+		</Pin>
+		<Pin port="PE13">
+			<Alternate name="TIM1_CH3"/>
+			<Alternate name="FSMC_D10"/>
+		</Pin>
+		<Pin port="PE14">
+			<Alternate name="TIM1_CH4"/>
+			<Alternate name="FSMC_D11"/>
+		</Pin>
+		<Pin port="PE15">
+			<Alternate name="TIM1_BKIN"/>
+			<Alternate name="FSMC_D12"/>
+		</Pin>
+		<Pin port="PE2">
+			<Alternate name="ETH_MII_TXD3"/>
+			<Alternate name="FSMC_A23"/>
+			<Alternate name="TRACECLK"/>
+		</Pin>
+		<Pin port="PE3">
+			<Alternate name="FSMC_A19"/>
+			<Alternate name="TRACED0"/>
+		</Pin>
+		<Pin port="PE4">
+			<Alternate name="DCMI_D4"/>
+			<Alternate name="FSMC_A20"/>
+			<Alternate name="TRACED1"/>
+		</Pin>
+		<Pin port="PE5">
+			<Alternate name="TIM9_CH1"/>
+			<Alternate name="DCMI_D6"/>
+			<Alternate name="FSMC_A21"/>
+			<Alternate name="TRACED2"/>
+		</Pin>
+		<Pin port="PE6">
+			<Alternate name="TIM9_CH2"/>
+			<Alternate name="DCMI_D7"/>
+			<Alternate name="FSMC_A22"/>
+			<Alternate name="TRACED3"/>
+		</Pin>
+		<Pin port="PE7">
+			<Alternate name="TIM1_ETR"/>
+			<Alternate name="FSMC_D4"/>
+		</Pin>
+		<Pin port="PE8">
+			<Alternate name="TIM1_CH1N"/>
+			<Alternate name="FSMC_D5"/>
+		</Pin>
+		<Pin port="PE9">
+			<Alternate name="TIM1_CH1"/>
+			<Alternate name="FSMC_D6"/>
+		</Pin>
+		<Pin port="PH0">
+		</Pin>
+		<Pin port="PH1">
+		</Pin>
+        </Pinout>
+
+	<Functions>
+		<Timer>
+			<Option name="TIM1"/>
+			<Option name="TIM2"/>
+			<Option name="TIM3"/>
+			<Option name="TIM4"/>
+			<Option name="TIM5"/>
+			<Option name="TIM6"/>
+			<Option name="TIM7"/>
+			<Option name="TIM8"/>
+			<Option name="TIM9"/>
+			<Option name="TIM10"/>
+			<Option name="TIM11"/>
+			<Option name="TIM12"/>
+			<Option name="TIM13"/>
+			<Option name="TIM14"/>
+		</Timer>
+
+		<QuadratureEncoder>
+			<Option name="TIM1">
+				<pin name="PA1"/>
+				<pin name="PA2"/>
+			</Option>
+			<Option name="TIM2">
+				<pin name="PB3"/>
+				<pin name="PB4"/>
+			</Option>
+			<Option name="TIM3">
+				<pin name="PC5"/>
+				<pin name="PC6"/>
+			</Option>
+		</QuadratureEncoder>
+
+		<PWM>
+			<Option name="TIM1">
+				<pin name="PA1"/>
+			</Option>
+			<Option name="TIM2">
+				<pin name="PB3"/>
+			</Option>
+			<Option name="TIM3">
+				<pin name="PC5"/>
+			</Option>
+		</PWM>
+
+		<ADC>
+			<Option name="ADC1" type="OneOfThem">
+				<pin name="ADC123_IN0"/>
+				<pin name="ADC123_IN1"/>
+				<pin name="ADC123_IN2"/>
+				<pin name="ADC123_IN3"/>
+				<pin name="ADC12_IN4"/>
+				<pin name="ADC12_IN5"/>
+				<pin name="ADC12_IN6"/>
+				<pin name="ADC12_IN7"/>
+				<pin name="ADC12_IN8"/>
+				<pin name="ADC12_IN9"/>
+				<pin name="ADC123_IN10"/>
+				<pin name="ADC123_IN11"/>
+				<pin name="ADC123_IN12"/>
+				<pin name="ADC123_IN13"/>
+				<pin name="ADC12_IN14"/>
+				<pin name="ADC12_IN15"/>
+			</Option>
+			<Option name="ADC2" type="OneOfThem">
+				<pin name="ADC123_IN0"/>
+				<pin name="ADC123_IN1"/>
+				<pin name="ADC123_IN2"/>
+				<pin name="ADC123_IN3"/>
+				<pin name="ADC12_IN4"/>
+				<pin name="ADC12_IN5"/>
+				<pin name="ADC12_IN6"/>
+				<pin name="ADC12_IN7"/>
+				<pin name="ADC12_IN8"/>
+				<pin name="ADC12_IN9"/>
+				<pin name="ADC123_IN10"/>
+				<pin name="ADC123_IN11"/>
+				<pin name="ADC123_IN12"/>
+				<pin name="ADC123_IN13"/>
+				<pin name="ADC12_IN14"/>
+				<pin name="ADC12_IN15"/>
+			</Option>
+			<Option name="ADC3" type="OneOfThem">
+				<pin name="ADC123_IN0"/>
+				<pin name="ADC123_IN1"/>
+				<pin name="ADC123_IN2"/>
+				<pin name="ADC123_IN3"/>
+				<pin name="ADC123_IN10"/>
+				<pin name="ADC123_IN11"/>
+				<pin name="ADC123_IN12"/>
+				<pin name="ADC123_IN13"/>
+			</Option>
+		</ADC>
+
+		<DAC>
+			<Option name="DAC1">
+				<pin name="DAC1_OUT"/>
+			</Option>
+			<Option name="DAC2">
+				<pin name="DAC2_OUT"/>
+			</Option>
+		</DAC>
+
+		<RS232>
+			<Option name="USART1">
+				<pin name="USART1_RX"/>
+				<pin name="USART1_TX"/>
+			</Option>
+			<Option name="USART2">
+				<pin name="USART2_RX"/>
+				<pin name="USART2_TX"/>
+			</Option>
+			<Option name="USART3">
+				<pin name="USART3_RX"/>
+				<pin name="USART3_TX"/>
+			</Option>
+			<Option name="UART4">
+				<pin name="UART4_RX"/>
+				<pin name="UART4_TX"/>
+			</Option>
+			<Option name="UART5">
+				<pin name="UART5_RX"/>
+				<pin name="UART5_TX"/>
+			</Option>
+			<Option name="USART6">
+				<pin name="USART6_RX"/>
+				<pin name="USART6_TX"/>
+			</Option>
+		</RS232>
+
+		<SPI>
+			<Option name="SPI1">
+				<pin name="SPI1_MISO"/>
+				<pin name="SPI1_MOSI"/>
+				<pin name="SPI1_SCK"/>
+                        </Option>
+			<Option name="SPI2">
+				<pin name="SPI2_MISO"/>
+				<pin name="SPI2_MOSI"/>
+				<pin name="SPI2_SCK"/>
+                        </Option>
+			<Option name="SPI3">
+				<pin name="SPI3_MISO"/>
+				<pin name="SPI3_MOSI"/>
+				<pin name="SPI3_SCK"/>
+                        </Option>
+		</SPI>
+
+		<I2C>
+			<Option name="I2C1">
+				<pin name="I2C1_SCL"/>
+				<pin name="I2C1_SDA"/>
+                        </Option>
+			<Option name="I2C2">
+				<pin name="I2C2_SCL"/>
+				<pin name="I2C2_SDA"/>
+                        </Option>
+			<Option name="I2C3">
+				<pin name="I2C3_SCL"/>
+				<pin name="I2C3_SDA"/>
+                        </Option>
+		</I2C>
+
+		<SDCard>
+		</SDCard>
+
+		<CAN>
+			<Option name="CAN1">
+				<pin name="CAN1_RX"/>
+				<pin name="CAN1_TX"/>
+                        </Option>
+			<Option name="CAN2">
+				<pin name="CAN2_RX"/>
+				<pin name="CAN2_TX"/>
+                        </Option>
+		</CAN>
+
+		<USB_OTG>
+		</USB_OTG>
+
+	</Functions>
+</Device>
