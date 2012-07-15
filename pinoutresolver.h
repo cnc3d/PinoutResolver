@@ -73,7 +73,7 @@ private:
 
     QMap<QString, quint64> _peripheralsMap;
     QMap<QString, quint64> _pinoutMap;
-    QMap<QString, int> _peripheralsRequested;
+    QStringList _peripheralsRequested;
     QMultiMap<QString, QString> _alternatePinoutMap;
 
     ResolveTree _treeRoot;

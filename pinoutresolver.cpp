@@ -182,7 +182,10 @@ void PinoutResolver::LoadRequest(QDomElement root)
         if (peripheralNodes.at(i).nodeName() == "Peripheral")
         {
             qDebug() << "Requested Peripheral : " << peripheralNodes.at(i).attributes().namedItem("name").nodeValue() << " / Number = " << peripheralNodes.at(i).attributes().namedItem("number").nodeValue();
-            _peripheralsRequested[peripheralNodes.at(i).attributes().namedItem("name").nodeValue()] = peripheralNodes.at(i).attributes().namedItem("number").nodeValue().toInt();
+            for (int num = 0; num <  peripheralNodes.at(i).attributes().namedItem("number").nodeValue().toInt(); num++)
+            {
+                _peripheralsRequested << peripheralNodes.at(i).attributes().namedItem("name").nodeValue();
+            }
         }
     }
 }
@@ -200,7 +203,7 @@ void PinoutResolver::resolve(QDomNode pinout)
 
     ResolveTree* currentTree = &_treeRoot;
 
-    QStringList peripheralRequestedList = _peripheralsRequested.keys();
+    QStringList peripheralRequestedList = _peripheralsRequested;
     qDebug() << "peripheralRequestedList = " << peripheralRequestedList;
 
     while ( (!finished) && (count < MAX_LOOP) )
