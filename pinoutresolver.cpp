@@ -208,10 +208,15 @@ void PinoutResolver::resolve(QDomNode pinout)
 
     while ( (!finished) && (count < MAX_LOOP) )
     {
-        QString periph = peripheralRequestedList.at(currentRequest);
+        qDebug() << "new Loop with"
+                 << currentTree->_data.getUsedPeripheral()
+                 << currentTree->_data.getUsedPin()
+                 << currentTree->_data.getDescription();
 
-        QDomNodeList options = pinout.namedItem(periph).childNodes();
-        qDebug() << "Resolve : level " << currentRequest << " / " << periph << " => " << options.count() << " options";
+        QString reqPeriph = peripheralRequestedList.at(currentRequest);
+
+        QDomNodeList options = pinout.namedItem(reqPeriph).childNodes();
+        qDebug() << "Resolve : level " << currentRequest << " / " << reqPeriph << " => " << options.count() << " options";
 
         ResolveTree* prev = NULL;
 
@@ -226,19 +231,21 @@ void PinoutResolver::resolve(QDomNode pinout)
             {
                 qDebug() << QString("Trying : %1").arg(pin, 64, 2, QLatin1Char('0'));
 
-                if (currentTree->_data.IsPinAvailable(pin))
+                quint64 periph = _peripheralsMap[options.at(i).attributes().namedItem("name").nodeValue()];
+                if (currentTree->_data.IsPinAvailable(pin) && currentTree->_data.IsPeripheralAvailable(periph))
                 {
                     ResolveTree* newTree = new ResolveTree(currentTree);
-                    newTree->_data.setUsedPin(pin | currentTree->_data.getUsedPin());
+                    newTree->_data.addUsedPin(pin);// | currentTree->_data.getUsedPin());
+                    newTree->_data.addUsedPeripheral(periph);
 
-                    QString desc = periph
+                    QString desc = reqPeriph
                                    + " => " + options.at(i).attributes().namedItem("name").nodeValue() + " with pin : ";
                     for(int nodeId = 0; nodeId < options.at(i).childNodes().count(); nodeId++)
                     {
                         desc += options.at(i).childNodes().at(nodeId).attributes().namedItem("name").nodeValue() + " / ";
                     }
                     desc += QString(" %1").arg(pin,64,2,QLatin1Char('0'));
-                    currentTree->_data.setDescription(desc);
+                    newTree->_data.setDescription(desc);
 
                     if (prev == NULL)
                     {
@@ -263,7 +270,7 @@ void PinoutResolver::resolve(QDomNode pinout)
         // If there are child, descend inside them
         if (currentTree->_child != NULL)
         {
-            qDebug() << "# down in child";
+            qDebug() << "# down in child" << currentTree->_child->_data.getDescription();
             currentTree = currentTree->_child;
             currentRequest++;
         }
@@ -272,7 +279,7 @@ void PinoutResolver::resolve(QDomNode pinout)
             // Else try the next node
             if (currentTree->_next != NULL)
             {
-                qDebug() << "# to next sibling";
+                qDebug() << "# to next sibling" << currentTree->_next->_data.getDescription();
                 currentTree = currentTree->_next;
             }
             else // Otherwise go up a level, and test the next one
@@ -332,6 +339,8 @@ void PinoutResolver::resolve(QDomNode pinout)
         }
         qDebug() << currentTree->_data.getDescription();
     }
+
+    PrintTree();
 }
 
 QList<quint64> PinoutResolver::GetPinoutCartesianProduct(QDomNodeList function)
@@ -368,12 +377,12 @@ QList<quint64> PinoutResolver::GetPinoutCartesianProduct(QDomNodeList function)
 
         if(!finished)
         {
-            qDebug() << "new config = " << currentPos;
+            //qDebug() << "new config = " << currentPos;
 
             quint64 pin = 0;
             for(int i=0; i<pinConfigs.size(); i++)
             {
-                qDebug() << "Pin : " << pinConfigs[i].at(currentPos[i]);
+                //qDebug() << "Pin : " << pinConfigs[i].at(currentPos[i]);
                 pin |= _pinoutMap[pinConfigs[i].at(currentPos[i])];
             }
             cartesianProduct.append(pin);
@@ -383,4 +392,76 @@ QList<quint64> PinoutResolver::GetPinoutCartesianProduct(QDomNodeList function)
     }
 
     return cartesianProduct;
+}
+
+
+void PinoutResolver::PrintTree()
+{
+    ResolveTree* currentTree = &_treeRoot;
+
+    bool finished = false;
+
+    QFile file("tree.dot");
+    file.open(QIODevice::WriteOnly);
+    QTextStream out(&file);
+
+    out << "digraph tree {" << endl;
+    out << "node [shape=rect];" << endl;
+
+    while (!finished && (currentTree != NULL))
+    {
+        //qDebug() << currentTree->_data.getDescription() << "[" << currentTree->_child << currentTree->_previous << currentTree->_parent << "]";
+
+        out << (quint64) currentTree << "[label=\"" << currentTree->_data.getDescription() << "\"]";
+            //<< QString(" %1").arg(currentTree->_data.getUsedPin(),64,2,QLatin1Char('0')) << "\"]";
+
+        if (currentTree->_child != NULL)
+        {
+            out << (quint64) currentTree << "-> " << (quint64) currentTree->_child << " [label=\"child\", color=green]" << endl;
+        }
+        if (currentTree->_previous != NULL)
+        {
+            out << (quint64) currentTree << "-> " << (quint64) currentTree->_previous << " [label=\"prev\", color=blue]" << endl;
+        }
+        if (currentTree->_next != NULL)
+        {
+            out << (quint64) currentTree << "-> " << (quint64) currentTree->_next << " [label=\"next\", color=red]" << endl;
+        }
+
+        if (currentTree->_child != NULL)
+        {
+            currentTree = currentTree->_child;
+        }
+        else
+        {
+            if (currentTree->_next != NULL)
+            {
+                currentTree = currentTree->_next;
+            }
+            else
+            {
+                while (currentTree->_parent != NULL)
+                {
+                    currentTree = currentTree->_parent;
+
+                    if (currentTree->_next != NULL)
+                    {
+                        currentTree = currentTree->_next;
+                        break;
+                    }
+                }
+
+                if(currentTree->_parent == NULL)
+                {
+                    finished = true;
+                }
+
+            }
+
+        }
+    }
+
+    out << "}" << endl;
+
+    qDebug() << "system : " << system("dot -Tpng -O tree.dot");
 }

@@ -19,8 +19,25 @@ public:
     QString getDescription() {return _description;}
 
     void setUsedPin(quint64 pin) {_usedPin = pin;}
+    void addUsedPin(quint64 pin)
+    {
+        if(IsPinAvailable(pin))
+        {
+            _usedPin |= pin;
+        }
+        else
+        {
+            qDebug() << "pin already used" << (pin & _usedPin);
+        }
+    }
+
     quint64 getUsedPin() {return _usedPin;}
     bool IsPinAvailable(quint64 pin) {return ( (_usedPin & pin) == 0);}
+
+    void setUsedPeripheral(quint64 peripheral) {_usedPeripherals = peripheral;}
+    void addUsedPeripheral(quint64 peripheral) {_usedPeripherals |= peripheral;}
+    quint64 getUsedPeripheral() {return _usedPeripherals;}
+    bool IsPeripheralAvailable(quint64 peripheral) {return ( (_usedPeripherals & peripheral) == 0);}
 
 private:
     quint64 _usedPin;
@@ -33,7 +50,10 @@ class ResolveTree
 {
 
 public:
-    ResolveTree(ResolveTree* parent = NULL) {_parent = parent; _child = NULL; _previous = NULL; _next = NULL;}
+    ResolveTree(ResolveTree* parent = NULL) {_parent = parent; _child = NULL; _previous = NULL; _next = NULL;
+                                             if(parent != NULL) {_data.setUsedPin(parent->_data.getUsedPin());}
+                                             if(parent != NULL) {_data.setUsedPeripheral(parent->_data.getUsedPeripheral());}
+                                            }
     ~ResolveTree() {}
 
     ResolveData _data;
@@ -59,6 +79,8 @@ public:
     explicit PinoutResolver(QWidget *parent = 0);
     ~PinoutResolver();
     
+    void PrintTree();
+
 private:
     Ui::PinoutResolver *ui;
 
