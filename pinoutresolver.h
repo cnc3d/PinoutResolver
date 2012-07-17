@@ -80,6 +80,7 @@ public:
     ~PinoutResolver();
     
     void PrintTree();
+    QString pinoutToText(quint64 pinout);
 
 private:
     Ui::PinoutResolver *ui;
