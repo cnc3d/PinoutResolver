@@ -173,6 +173,23 @@ void PinoutResolver::preparePinMap()
     }
 }
 
+QString PinoutResolver::pinoutToText(quint64 pinout)
+{
+    QList<QString> keys = _pinoutMap.keys();
+
+    QString result;
+
+    for (int i=0; i<keys.size(); i++)
+    {
+        if (_pinoutMap[keys.at(i)] & pinout)
+        {
+            result += keys.at(i) + " ";
+        }
+    }
+
+    return result;
+}
+
 void PinoutResolver::LoadRequest(QDomElement root)
 {
     QDomNodeList peripheralNodes = root.childNodes();
@@ -244,7 +261,8 @@ void PinoutResolver::resolve(QDomNode pinout)
                     {
                         desc += options.at(i).childNodes().at(nodeId).attributes().namedItem("name").nodeValue() + " / ";
                     }
-                    desc += QString(" %1").arg(pin,64,2,QLatin1Char('0'));
+                    //desc += QString(" %1").arg(pin,64,2,QLatin1Char('0'));
+                    desc += pinoutToText(pin);
                     newTree->_data.setDescription(desc);
 
                     if (prev == NULL)
