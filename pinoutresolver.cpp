@@ -227,7 +227,7 @@ void PinoutResolver::resolve(QDomNode pinout)
     {
         qDebug() << "new Loop with"
                  << currentTree->_data.getUsedPeripheral()
-                 << currentTree->_data.getUsedPin()
+                 //<< currentTree->_data.getAllUsedPin()
                  << currentTree->_data.getDescription();
 
         QString reqPeriph = peripheralRequestedList.at(currentRequest);
