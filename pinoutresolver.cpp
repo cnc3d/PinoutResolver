@@ -23,7 +23,7 @@ PinoutResolver::PinoutResolver(QWidget *parent) :
 
     qDebug() << _peripheralsMap;
     qDebug() << _alternatePinoutMap;
-    qDebug() << _pinoutMap;
+    //qDebug() << _pinoutMap;
     qDebug() << _peripheralsRequested;
 
 
@@ -165,15 +165,15 @@ void PinoutResolver::preparePinMap()
     {
         for (int pin=0; pin<16; pin++)
         {
-            quint64 decal = (quint64)((port-'A')*16 + pin);
-            quint64 bitPos = 1ULL << decal; // 1ULL => to define '1' as a 64 bits constant, otherwise, it defaults to 32 bits, and the shift fails
-            //qDebug() << "pinoutMap : " << decal << QString("%1").arg(bitPos,64,2,QLatin1Char('0'));
-            _pinoutMap[QString("P%1%2").arg(port).arg(pin)] =  bitPos;//1 << ((port-'A')*16 + pin);
+            unsigned int decal = (unsigned int)((port-'A')*16 + pin);
+            pin_T pinout;
+            pinout.setUsed(decal);
+            _pinoutMap[QString("P%1%2").arg(port).arg(pin)] = pinout;
         }
     }
 }
 
-QString PinoutResolver::pinoutToText(quint64 pinout)
+QString PinoutResolver::pinoutToText(pin_T pinout)
 {
     QList<QString> keys = _pinoutMap.keys();
 
@@ -181,7 +181,7 @@ QString PinoutResolver::pinoutToText(quint64 pinout)
 
     for (int i=0; i<keys.size(); i++)
     {
-        if (_pinoutMap[keys.at(i)] & pinout)
+        if ( ! pinout.isAvailable(_pinoutMap[keys.at(i)]) )
         {
             result += keys.at(i) + " ";
         }
@@ -242,11 +242,11 @@ void PinoutResolver::resolve(QDomNode pinout)
         {
             qDebug() << options.at(i).attributes().namedItem("name").nodeValue();
 
-            QList<quint64> pinoutCartesianProduct = GetPinoutCartesianProduct(options.at(i).childNodes());
+            QList<pin_T> pinoutCartesianProduct = GetPinoutCartesianProduct(options.at(i).childNodes());
 
-            foreach(quint64 pin, pinoutCartesianProduct)
+            foreach(pin_T pin, pinoutCartesianProduct)
             {
-                qDebug() << QString("Trying : %1").arg(pin, 64, 2, QLatin1Char('0'));
+                //qDebug() << QString("Trying : %1").arg(pin, 64, 2, QLatin1Char('0'));
 
                 quint64 periph = _peripheralsMap[options.at(i).attributes().namedItem("name").nodeValue()];
                 if (currentTree->_data.IsPinAvailable(pin) && currentTree->_data.IsPeripheralAvailable(periph))
@@ -361,9 +361,9 @@ void PinoutResolver::resolve(QDomNode pinout)
     PrintTree();
 }
 
-QList<quint64> PinoutResolver::GetPinoutCartesianProduct(QDomNodeList function)
+QList<pin_T> PinoutResolver::GetPinoutCartesianProduct(QDomNodeList function)
 {
-    QList<quint64> cartesianProduct;
+    QList<pin_T> cartesianProduct;
 
     QVector< QList<QString> > pinConfigs;
     QVector<int> currentPos;
@@ -390,18 +390,21 @@ QList<quint64> PinoutResolver::GetPinoutCartesianProduct(QDomNodeList function)
                 finished = true;
                 break;
             }
-            currentPos[currentPosInVector]++;
+            else
+            {
+                currentPos[currentPosInVector]++;
+            }
         }
 
         if(!finished)
         {
             //qDebug() << "new config = " << currentPos;
 
-            quint64 pin = 0;
+            pin_T pin;
             for(int i=0; i<pinConfigs.size(); i++)
             {
                 //qDebug() << "Pin : " << pinConfigs[i].at(currentPos[i]);
-                pin |= _pinoutMap[pinConfigs[i].at(currentPos[i])];
+                pin.setUsed(_pinoutMap[pinConfigs[i].at(currentPos[i])]);
             }
             cartesianProduct.append(pin);
 

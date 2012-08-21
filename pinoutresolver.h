@@ -16,27 +16,27 @@ class pin_T
 public:
     pin_T()
     {
-        for (int i=0; i<pin_T_array_size; i++) { value[i] = 0; }
+        for (unsigned int i=0; i<pin_T_array_size; i++) { value[i] = 0; }
     }
 
     pin_T(const pin_T& source)
     {
-        for (int i=0; i<pin_T_array_size; i++) { value[i] = source.value[i]; }
+        for (unsigned int i=0; i<pin_T_array_size; i++) { value[i] = source.value[i]; }
     }
 
     bool operator == (const pin_T other)
     {
         bool res = true;
-        for (int i=0; i<pin_T_array_size; i++)
+        for (unsigned int i=0; i<pin_T_array_size; i++)
         {
             res = res && (value[i] == other.value[i]);
         }
         return res;
     }
 
-    bool operator = (const pin_T other)
+    void operator = (const pin_T other)
     {
-        for (int i=0; i<pin_T_array_size; i++)
+        for (unsigned int i=0; i<pin_T_array_size; i++)
         {
             value[i] = other.value[i];
         }
@@ -47,7 +47,19 @@ public:
         unsigned int nbArray = pinNb % 64;
         unsigned int nbOffset = pinNb - 64*nbArray;
 
-        return (value[nbArray] & (1 << nbOffset) == 0);
+        return ( (value[nbArray] & (1 << nbOffset)) == 0);
+    }
+
+    bool isAvailable(const pin_T pin)
+    {
+        bool res = true;
+
+        for (unsigned int i=0; i<pin_T_array_size; i++)
+        {
+            res = (res && ((value[i] && pin.value[i]) == pin.value[i]) );
+        }
+
+        return res;
     }
 
     void setUsed(const unsigned int pinNb)
@@ -58,9 +70,12 @@ public:
         value[nbArray] |= (1 << nbOffset);
     }
 
-    void addUsed(const unsigned int pinNb)
+    void setUsed(const pin_T pin)
     {
-
+        for (unsigned int i=0; i<pin_T_array_size; i++)
+        {
+            value[i] |= pin.value[i];
+        }
     }
 
 private:
@@ -89,9 +104,21 @@ public:
             qDebug() << "pin already used" << pinNb;
         }
     }
+    void addUsedPin(const pin_T pin)
+    {
+        if(IsPinAvailable(pin))
+        {
+            _usedPin.setUsed(pin);
+        }
+        else
+        {
+            qDebug() << "pin already used";// << pin;
+        }
+    }
 
     pin_T getAllUsedPin() {return _usedPin;}
     bool IsPinAvailable(const unsigned int pinNb) {return _usedPin.isAvailable(pinNb);}
+    bool IsPinAvailable(const pin_T pin) {return _usedPin.isAvailable(pin);}
 
     void setUsedPeripheral(quint64 peripheral) {_usedPeripherals = peripheral;}
     void addUsedPeripheral(quint64 peripheral) {_usedPeripherals |= peripheral;}
@@ -139,7 +166,7 @@ public:
     ~PinoutResolver();
     
     void PrintTree();
-    QString pinoutToText(quint64 pinout);
+    QString pinoutToText(pin_T pinout);
 
 private:
     Ui::PinoutResolver *ui;
@@ -151,10 +178,10 @@ private:
     void LoadRequest(QDomElement root);
     void preparePinMap();
     void resolve(QDomNode pinout);
-    QList<quint64> GetPinoutCartesianProduct(QDomNodeList function);
+    QList<pin_T> GetPinoutCartesianProduct(QDomNodeList function);
 
     QMap<QString, quint64> _peripheralsMap;
-    QMap<QString, quint64> _pinoutMap;
+    QMap<QString, pin_T> _pinoutMap;
     QStringList _peripheralsRequested;
     QMultiMap<QString, QString> _alternatePinoutMap;
 
