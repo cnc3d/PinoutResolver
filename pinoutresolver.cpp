@@ -161,7 +161,7 @@ void PinoutResolver::ListFunctions(QDomElement root)
 
 void PinoutResolver::preparePinMap()
 {
-    for (char port='A'; port <= 'D'; port++)
+    for (char port='A'; port <= 'H'; port++)
     {
         for (int pin=0; pin<16; pin++)
         {

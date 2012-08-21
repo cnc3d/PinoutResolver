@@ -44,10 +44,10 @@ public:
 
     bool isAvailable(const unsigned int pinNb)
     {
-        unsigned int nbArray = pinNb % 64;
-        unsigned int nbOffset = pinNb - 64*nbArray;
+        unsigned int nbArray = pinNb / 64;
+        unsigned int nbOffset = pinNb % 64;
 
-        return ( (value[nbArray] & (1 << nbOffset)) == 0);
+        return ( (value[nbArray] & (1LL << nbOffset)) == 0);
     }
 
     bool isAvailable(const pin_T pin)
@@ -56,7 +56,7 @@ public:
 
         for (unsigned int i=0; i<pin_T_array_size; i++)
         {
-            res = (res && ((value[i] && pin.value[i]) == pin.value[i]) );
+            res = (res && ((value[i] & pin.value[i]) == 0) );
         }
 
         return res;
@@ -64,10 +64,14 @@ public:
 
     void setUsed(const unsigned int pinNb)
     {
-        unsigned int nbArray = pinNb % 64;
-        unsigned int nbOffset = pinNb - 64*nbArray;
+        unsigned int nbArray = pinNb / 64;
+        unsigned int nbOffset = pinNb % 64;
 
-        value[nbArray] |= (1 << nbOffset);
+        if (nbArray >= pin_T_array_size)
+        {
+            qDebug() << "Error : nbArray too great = " << nbArray << " (pinNb = " << pinNb << ")";
+        }
+        value[nbArray] |= (1LL << nbOffset);
     }
 
     void setUsed(const pin_T pin)
