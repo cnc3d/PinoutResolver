@@ -560,29 +560,56 @@
 
 		<QuadratureEncoder>
 			<Option name="TIM1">
-				<pin name="PA1"/>
-				<pin name="PA2"/>
+                                <pin name="TIM1_CH1"/>
+                                <pin name="TIM1_CH2"/>
 			</Option>
-			<Option name="TIM2">
-				<pin name="PB3"/>
-				<pin name="PB4"/>
-			</Option>
-			<Option name="TIM3">
-				<pin name="PC5"/>
-				<pin name="PC6"/>
-			</Option>
+                        <Option name="TIM2">
+                                <pin name="TIM2_CH1"/>
+                                <pin name="TIM2_CH1"/>
+                        </Option>
+                        <Option name="TIM3">
+                                <pin name="TIM3_CH1"/>
+                                <pin name="TIM3_CH1"/>
+                        </Option>
+                        <Option name="TIM4">
+                                <pin name="TIM4_CH1"/>
+                                <pin name="TIM4_CH1"/>
+                        </Option>
+                        <Option name="TIM5">
+                                <pin name="TIM5_CH1"/>
+                                <pin name="TIM5_CH1"/>
+                        </Option>
+                        <Option name="TIM8">
+                                <pin name="TIM8_CH1"/>
+                                <pin name="TIM8_CH1"/>
+                        </Option>
 		</QuadratureEncoder>
 
 		<PWM>
 			<Option name="TIM1">
-				<pin name="PA1"/>
+                                <pin name="TIM1_CH1"/>
 			</Option>
-			<Option name="TIM2">
-				<pin name="PB3"/>
-			</Option>
-			<Option name="TIM3">
-				<pin name="PC5"/>
-			</Option>
+                        <Option name="TIM1">
+                                <pin name="TIM1_CH2"/>
+                        </Option>
+                        <Option name="TIM1">
+                                <pin name="TIM1_CH3"/>
+                        </Option>
+                        <Option name="TIM1">
+                                <pin name="TIM1_CH4"/>
+                        </Option>
+                        <Option name="TIM8">
+                                <pin name="TIM8_CH1"/>
+                        </Option>
+                        <Option name="TIM8">
+                                <pin name="TIM8_CH2"/>
+                        </Option>
+                        <Option name="TIM8">
+                                <pin name="TIM8_CH3"/>
+                        </Option>
+                        <Option name="TIM8">
+                                <pin name="TIM8_CH4"/>
+                        </Option>
 		</PWM>
 
 		<ADC>
@@ -718,7 +745,7 @@
 		</CAN>
 
 		<USB_OTG>
-		</USB_OTG>
+                </USB_OTG>
 
 	</Functions>
 </Device>

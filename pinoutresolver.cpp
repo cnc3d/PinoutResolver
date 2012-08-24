@@ -481,5 +481,5 @@ void PinoutResolver::PrintTree()
 
     out << "}" << endl;
 
-    qDebug() << "system : " << system("dot -Tpng -O tree.dot");
+    //qDebug() << "system : " << system("dot -Tpng -O tree.dot");
 }
