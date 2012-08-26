@@ -560,28 +560,28 @@
 
 		<QuadratureEncoder>
 			<Option name="TIM1">
-				<pin name="PA1"/>
-				<pin name="PA2"/>
+				<pin name="TIM1_CH1"/>
+				<pin name="TIM1_CH2"/>
 			</Option>
 			<Option name="TIM2">
-				<pin name="PB3"/>
-				<pin name="PB4"/>
+				<pin name="TIM2_CH1_ETR"/>
+				<pin name="TIM2_CH2"/>
 			</Option>
 			<Option name="TIM3">
-				<pin name="PC5"/>
-				<pin name="PC6"/>
+				<pin name="TIM3_CH1"/>
+				<pin name="TIM3_CH2"/>
 			</Option>
 		</QuadratureEncoder>
 
 		<PWM>
 			<Option name="TIM1">
-				<pin name="PA1"/>
+				<pin name="TIM1_CH1"/>
 			</Option>
 			<Option name="TIM2">
-				<pin name="PB3"/>
+				<pin name="TIM2_CH1_ETR"/>
 			</Option>
 			<Option name="TIM3">
-				<pin name="PC5"/>
+				<pin name="TIM3_CH1"/>
 			</Option>
 		</PWM>
 
@@ -704,6 +704,18 @@
 		</I2C>
 
 		<SDCard>
+			<Option name="SDIO">
+				<pin name="SDIO_D0"/>
+				<pin name="SDIO_D1"/>
+				<pin name="SDIO_D2"/>
+				<pin name="SDIO_D3"/>
+				<pin name="SDIO_D4"/>
+				<pin name="SDIO_D5"/>
+				<pin name="SDIO_D6"/>
+				<pin name="SDIO_D7"/>
+				<pin name="SDIO_CK"/>
+				<pin name="SDIO_CMD"/>
+			</Option>
 		</SDCard>
 
 		<CAN>

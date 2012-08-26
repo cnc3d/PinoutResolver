@@ -373,6 +373,12 @@ QList<pin_T> PinoutResolver::GetPinoutCartesianProduct(QDomNodeList function)
         QList<QString> alternate = _alternatePinoutMap.values(function.at(i).attributes().namedItem("name").nodeValue());
         pinConfigs.append(alternate);
         currentPos.append(0);
+
+        if (alternate.size() == 0)
+        {
+            qDebug() << "No pinout found for function : " << function.at(i).attributes().namedItem("name").nodeValue();
+            return cartesianProduct; // empty...
+        }
     }
 
     qDebug() << "pinConfigs =" << pinConfigs;
@@ -380,6 +386,7 @@ QList<pin_T> PinoutResolver::GetPinoutCartesianProduct(QDomNodeList function)
     while(!finished)
     {
         int currentPosInVector = 0;
+        /// \todo handle the case where no pins are used, only a peripheral (for example for a Timer)
         while ( currentPos[currentPosInVector] == pinConfigs.at(currentPosInVector).size() )
         {
             currentPos[currentPosInVector] = 0;
@@ -484,5 +491,5 @@ void PinoutResolver::PrintTree()
 
     out << "}" << endl;
 
-    qDebug() << "system : " << system("dot -Tpng -O tree.dot");
+    //qDebug() << "system : " << system("dot -Tpng -O tree.dot");
 }
